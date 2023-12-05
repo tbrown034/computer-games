@@ -13,11 +13,22 @@ header {
   gap: 5px;
 }
 
-#button-container {
+#game-section {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.button-container {
   display: flex;
   gap: 5px;
 }
 
 #go-back {
   width: fit-content;
+}
+
+#rock-board {
+  width: fit-content;
+  padding: 5px;
 }

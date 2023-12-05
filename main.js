@@ -15,18 +15,34 @@ const playTic = document.getElementById("play-tic");
 const goBack = document.getElementById("go-back");
 const playConnect = document.getElementById("play-connect");
 const welcomeMessage = document.getElementById("welcome-message");
+const gameSection = document.getElementById("game-section");
+const introSection = document.getElementById("intro-section");
 
 // helpers
 
 const enterName = () => {
-  let userName = nameInput.value;
-  welcomeMessage.innerHTML = `Welcome ${userName}! Please select a game to continue`;
-  chooseSection.style.display = "flex";
-  nameInput.value = "";
+  let userName = nameInput.value.trim();
+  if (userName) {
+    welcomeMessage.innerHTML = `Welcome ${userName}! Please select a game to continue`;
+    chooseSection.style.display = "flex";
+    nameInput.value = "";
+  } else {
+    alert("Please enter your name."); // Simple validation
+  }
 };
 
 const clickGoBack = () => {
+  // Reset input fields and messages
+  nameInput.value = "";
+  welcomeMessage.innerHTML = "";
+
+  // Clear dynamically added content
+  gameSection.innerHTML = "";
+
+  // Restore the initial display state of sections
+  introSection.style.display = "flex";
   chooseSection.style.display = "none";
+  gameSection.style.display = "none";
 };
 
 // event listeners
