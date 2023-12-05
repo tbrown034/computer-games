@@ -4,11 +4,13 @@
 
 const gameSection = document.getElementById("game-section");
 const chooseSection = document.getElementById("choose-section");
+const resultSection = document.getElementById("result-section");
+let gameBoard = null;
 
 // helpers
 
 const computerSelection = () => {
-  let choice = ["rock", "paper", "scissors"];
+  let choice = ["Rock", "Paper", "Scissors"];
   let randomNum = Math.floor(Math.random() * 3);
   return choice[randomNum];
 };
@@ -22,7 +24,7 @@ export const handlePlayRock = () => {
   const gameTitle = document.createElement("div");
   gameTitle.innerText = "Rock Paper Scissors";
   gameSection.append(gameTitle);
-  const gameBoard = document.createElement("div");
+  gameBoard = document.createElement("div");
   gameBoard.setAttribute("id", "rock-board");
   gameSection.append(gameBoard);
   const instructions = document.createElement("div");
@@ -44,7 +46,38 @@ export const handlePlayRock = () => {
   buttonContainer.append(rockButton, paperButton, scissorsButton);
 };
 
-const determineWinner = () => {};
+const handlePlayAgain = () => {
+  console.log("handleplayagain");
+};
+
+const playAgain = () => {
+  const resetButton = document.createElement("button");
+  resetButton.innerText = "Play Again";
+  resetButton.addEventListener("click", handlePlayAgain);
+  resultSection.append(resetButton);
+};
+
+const determineWinner = (humanChoice, computerChoice) => {
+  if (humanChoice === computerChoice) {
+    resultSection.innerText = "It is a tie!!";
+    playAgain();
+  } else if (humanChoice === "Rock" && computerChoice === "Paper") {
+    resultSection.innerText = "You Lose!!";
+    playAgain();
+  } else if (humanChoice === "Rock" && computerChoice === "Scissors") {
+    resultSection.innerText = "You Win!!!";
+    playAgain();
+  } else if (humanChoice === "Paper" && computerChoice === "Scissors") {
+    resultSection.innerText = "You Looose!";
+    playAgain();
+  } else if (humanChoice === "Paper" && computerChoice === "Rock") {
+    resultSection.innerText = "You Win!!!";
+    playAgain();
+  } else {
+    resultSection.innerText = "Error in determining winner";
+    playAgain();
+  }
+};
 
 const selectPaper = () => {
   let humanChoice = "Paper";
@@ -56,6 +89,9 @@ const selectPaper = () => {
   yourChoice.setAttribute("id", "your-choice");
   theirChoice.setAttribute("id", "their-choice");
   gameSection.append(yourChoice, theirChoice);
+  determineWinner(humanChoice, computerChoice);
+  const displayWinner = document.createElement("div");
+  displayWinner.innerHTML = `Winner is ${determineWinner}`;
 };
 
 const selectRock = () => {

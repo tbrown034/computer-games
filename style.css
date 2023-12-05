@@ -7,16 +7,25 @@ header {
   justify-content: center;
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+}
+
 #choose-section {
   display: none;
   flex-direction: column;
   gap: 5px;
+  padding: 10px;
+  border: black 2px solid;
+  width: fit-content;
 }
 
 #game-section {
   display: flex;
   flex-direction: column;
   gap: 5px;
+  width: fit-content;
 }
 
 .button-container {
@@ -31,4 +40,12 @@ header {
 #rock-board {
   width: fit-content;
   padding: 5px;
+  display: flex;
+  flex-direction: column;
+  border: 2px darkblue solid;
+}
+
+#result-section {
+  font-size: 80px;
+  color: green;
 }
