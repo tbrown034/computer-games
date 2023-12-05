@@ -1,0 +1,23 @@
+body {
+  background-color: lightskyblue;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+}
+
+#choose-section {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+}
+
+#button-container {
+  display: flex;
+  gap: 5px;
+}
+
+#go-back {
+  width: fit-content;
+}
